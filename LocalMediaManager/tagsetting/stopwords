@@ -1,0 +1,8 @@
+#this for automatic tag generation, if your folder contains names that are not useful use this to not include them
+#tags are generated based on the frequency of usage in file path
+wmv
+avi
+mp4
+wma
+720p
+1080p

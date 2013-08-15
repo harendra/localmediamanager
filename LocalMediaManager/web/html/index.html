@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Home Media Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+      
+      .floatleft{
+      	float:left;
+      	overflow:auto;
+      }
+      
+      .block{
+      	display:block;
+      	overflow:auto;
+      }
+      
+      .imgmain{
+      	height:300px;
+      	width:auto;
+      }
+      .image{
+      	float:left;
+      	overflow:auto;
+      	margin:5px;
+      }
+      .title{
+  		font-size:1.6em;
+      	color:#f3f3f3;
+      	line-height:1em;
+      	margin-top:20px;
+      	margin-left:5px;
+      	border:1px solid #c0c0c0;
+      	border-radius:5px;
+      	padding:5px;
+      	float:left;
+      	background:#606060;
+      }
+      
+      #main{
+      	margin-left:5em;
+      }
+      
+      .folderimg{
+      	width:200px;
+      	height:auto;
+      }
+      
+      .foldertext{
+      	color:#404040;
+      	line-height:1.5em;
+      	text-align:center;
+      	word-wrap:break-word;
+      	width:200px;
+      	overflow:hidden;
+      }
+      
+      .foldercontainer{
+      	margin:10px;
+      	cursor:pointer;
+      	height:250px;
+      }
+      
+      .line{
+      	border-bottom:3px solid #909090;
+      	margin-top:10px;
+      }
+      
+      .seperatorline{
+      	border-bottom:3px solid #c0c0c0;
+      	margin-top:10px;
+      }
+      
+      .tag{
+      	float:left;
+      	overflow:auto;
+      	margin:3px;
+      	cursor:pointer;
+      	border:1px solid #000000;
+      	background:#909090;
+      	color:white;
+      	padding:3px;
+      	border-radius:5px;
+      }
+      
+      #tags{
+      }
+      
+      a{color:white;}
+      a:visited{color:white;}
+      a:hover{color:white;}
+      a:link{color:white;}
+      a:active{color:white;}     
+      
+      .searchbox{
+      	margin-left:10px;
+      }
+      .label{
+      }
+      
+      .searchtext{
+      	height:1em;
+      	width:20em;
+      }
+      
+      .searchbutton{
+      	margin-left:10px;
+      	margin-top:-5px;
+      }
+    </style>
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  </head>
+
+  <body onload="new MediaFinderView().initialize()">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Home Media</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><div class="btn btn-inverse" style="margin-right:3px;">Back</div></li>
+              <li class="history"><div class="btn btn-inverse">History</div></li>
+            </ul>
+          </div><!--/.nav-collapse -->	
+          
+        	<div style="margin-top:5px;float:left;">
+	        	<div class="floatleft" style="margin-right:5px;">
+					<select name="folder" id="folder">
+					</select>
+				</div>
+				
+				<div class="imagenumber floatleft">
+					<select name="folder" id="imagenumber">
+						<option>Fewer Thumbnails</option>
+						<option>More Thumbnails</option>
+					</select>
+				</div>
+				
+				<div class="searchbox floatleft">
+					<div class="floatleft textinp"><input class="searchtext" type="text"></div>
+					<div class="floatleft searchbutton"><div class="btn btn-inverse">Search</div></div>
+					
+					
+				</div>
+			</div>
+						
+        </div>
+      </div>
+    </div>
+    
+    <div id="main" class="block">
+    	<div id="header" class="block"><h3></h3></div>
+      	<div id="tags" class="block">
+    	</div>
+ 		<div class="seperatorline"></div> 
+ 		
+    	<div id="header" class="block"><h3></h3></div>
+      	<div id="folders" class="block">
+    	</div>
+    	
+    	<div id="videos">
+    		<div id="header"><h3>Videos</h3></div>
+    		<div id="videosmain" class="block">
+    		</div>
+    	</div>
+    </div>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-dropdown.js"></script>
+    <script src="../assets/js/bootstrap.js"></script>	
+    <script src="../assets/js/json.js"></script>
+    <script src="../assets/js/root.js"></script>
+    <script src="../assets/js/tags.js"></script>
+    <script src="../assets/js/MediaFinderView.js"></script>
+    
+    <script>
+    	function loaddropdown(){
+    		$('.dropdown-toggle').dropdown();
+    	}
+    </script>
+  </body>
+</html>

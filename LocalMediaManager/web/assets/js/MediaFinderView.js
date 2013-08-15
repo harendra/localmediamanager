@@ -65,12 +65,13 @@ function MediaFinderView() {
 		var videos = new Array();	
 		for(key in data){
 			var currentrootdir=key;
-			var currentfilelist=data[key][key]['filelist'];
-			for(var i=0;i<currentfilelist.length;i++){
-				if(currentfilelist[i].toLowerCase().indexOf(keyword.toLowerCase())!=-1){
+			var currentfilelist=data[key];
+			for(filename in currentfilelist){
+				if(filename.toLowerCase().indexOf(keyword.toLowerCase())!=-1){
 					try {
-						var currentobj = data[currentrootdir][currentfilelist[i]];
-						currentobj['filename'] = currentfilelist[i];
+						var currentobj = data[currentrootdir][filename];
+						console.log(currentobj);
+						currentobj['filename'] =filename;
 						if (currentobj['type'] == 'file') {
 							if (currentobj['filetype'] == 'image') {
 								images.push(currentobj);
@@ -81,6 +82,7 @@ function MediaFinderView() {
 							directories.push(currentobj);
 						}
 					} catch(err) {
+
 		
 					}
 			
@@ -252,8 +254,13 @@ function MediaFinderView() {
 	}
 
 	function convertToFirefoxPath(path) {
+		try{
 		path = path.replace(/\\/g, "/");
 		return "../../" + path;
+	}
+	catch(err){
+		return "";
+	}
 	}
 
 }

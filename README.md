@@ -1,7 +1,9 @@
 LocalMediaManager
 =================
 
-Simple Application to manage your local media (videos) using browser interface
+Simple Application to manage your local media (videos) using browser interface. Really handy if you
+use chromecast. Just use the application with chrome with chromecast extension installed, you are ready
+to stream all your content right from browser.
 
 LocalMediaManager is a python application (python 2.7) that scans specified folders (and subfolders) for media files and indexes them. While indexing it takes
 several screenshots of all the files found and dumps all the information in a json file. You can then just open index.html file and manage all your media through browser. No installation required.

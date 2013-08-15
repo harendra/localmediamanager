@@ -19,4 +19,10 @@ Features
 
 Opera and chrome are recommended browsers.
 
+View wiki,
+https://github.com/harendra/localmediamanager/wiki
+
+Screenshot,
+https://raw.github.com/harendra/localmediamanager/master/LocalMediaManager/web/assets/img/homemediascreen.jpg
+
 
